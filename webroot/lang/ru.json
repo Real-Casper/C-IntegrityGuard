@@ -66,5 +66,11 @@
   "advance_upd_rka": "Обновить конфигурацию RKA",
   "advance_widevinel1": "Исправить Widevine L1",
   "nav_advance_menu": "Меню +",
-  "advance_set_zygisk_next_configs": "Настройка параметров Zygisk Next"
+  "advance_set_zygisk_next_configs": "Настройка параметров Zygisk Next",
+  "dialog_clear": "Clear",
+  "dialog_close": "Close",
+  "script_history_title": "Script Outputs",
+  "nav_advance_menu": "Menu +",
+  "advance_set_pif": "Set fingerprint (PIF)",
+  "advance_set_zygisk_next_configs": "Set Zygisk Next configs"
 }

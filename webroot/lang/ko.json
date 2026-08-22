@@ -66,5 +66,11 @@
   "advance_upd_rka": "RKA 구성 업데이트",
   "advance_widevinel1": "Widevine L1 수정",
   "nav_advance_menu": "메뉴 +",
-  "advance_set_zygisk_next_configs": "Zygisk Next 구성 설정"
+  "advance_set_zygisk_next_configs": "Zygisk Next 구성 설정",
+  "dialog_clear": "Clear",
+  "dialog_close": "Close",
+  "script_history_title": "Script Outputs",
+  "nav_advance_menu": "Menu +",
+  "advance_set_pif": "Set fingerprint (PIF)",
+  "advance_set_zygisk_next_configs": "Set Zygisk Next configs"
 }

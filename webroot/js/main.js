@@ -4,22 +4,34 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("main.js active");
 
-  const BASE_SCRIPT = "/data/adb/modules/CIntegrityGuard/Core/";
+  const CORE_BASE = "/data/adb/modules/CIntegrityGuard/Core/";
+  const COMMON_BASE = "/data/adb/modules/CIntegrityGuard/webroot/common/";
+
+  // Route each data-script to the right folder:
+  //   "name.sh"                 -> /Core/name.sh
+  //   "webroot/common/name.sh"  -> /webroot/common/name.sh
+  const resolveScript = (s) => s.startsWith("webroot/common/")
+    ? COMMON_BASE + s.slice("webroot/common/".length)
+    : CORE_BASE + s;
 
   // Register click events for buttons in Actions Page
-  document.querySelectorAll("#actions-page .menu-btn[data-script]").forEach(button => {
+  document.querySelectorAll("#actions-page [data-script]").forEach(button => {
     const scriptName = button.dataset.script;
-    if (scriptName) {
-      button.addEventListener("click", () => runScript(scriptName, BASE_SCRIPT, button));
-    }
+    if (!scriptName) return;
+    const full = resolveScript(scriptName);
+    const folder = full.slice(0, full.lastIndexOf("/") + 1);
+    const file = full.slice(full.lastIndexOf("/") + 1);
+    button.addEventListener("click", () => runScript(file, folder, button));
   });
 
   // Register click events for buttons in Advanced Menu Page
-  document.querySelectorAll("#advance-menu .menu-btn[data-script]").forEach(button => {
-      const scriptName = button.dataset.script;
-      if (scriptName) {
-          button.addEventListener("click", () => runScript(scriptName, BASE_SCRIPT, button));
-      }
+  document.querySelectorAll("#advance-menu [data-script]").forEach(button => {
+    const scriptName = button.dataset.script;
+    if (!scriptName) return;
+    const full = resolveScript(scriptName);
+    const folder = full.slice(0, full.lastIndexOf("/") + 1);
+    const file = full.slice(full.lastIndexOf("/") + 1);
+    button.addEventListener("click", () => runScript(file, folder, button));
   });
 
   const historyCard = document.getElementById("module-version-card");

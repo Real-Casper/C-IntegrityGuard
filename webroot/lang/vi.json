@@ -66,5 +66,11 @@
   "advance_upd_rka": "Cập nhật cấu hình RKA",
   "advance_widevinel1": "Sửa Widevine L1",
   "nav_advance_menu": "Menu +",
-  "advance_set_zygisk_next_configs": "Thiết lập cấu hình Zygisk Next"
+  "advance_set_zygisk_next_configs": "Thiết lập cấu hình Zygisk Next",
+  "dialog_clear": "Clear",
+  "dialog_close": "Close",
+  "script_history_title": "Script Outputs",
+  "nav_advance_menu": "Menu +",
+  "advance_set_pif": "Set fingerprint (PIF)",
+  "advance_set_zygisk_next_configs": "Set Zygisk Next configs"
 }

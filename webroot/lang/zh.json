@@ -66,5 +66,11 @@
   "advance_upd_rka": "更新 RKA 配置",
   "advance_widevinel1": "修复 Widevine L1",
   "nav_advance_menu": "菜单 +",
-  "advance_set_zygisk_next_configs": "设置 Zygisk Next 配置"
+  "advance_set_zygisk_next_configs": "设置 Zygisk Next 配置",
+  "dialog_clear": "Clear",
+  "dialog_close": "Close",
+  "script_history_title": "Script Outputs",
+  "nav_advance_menu": "Menu +",
+  "advance_set_pif": "Set fingerprint (PIF)",
+  "advance_set_zygisk_next_configs": "Set Zygisk Next configs"
 }

@@ -66,5 +66,11 @@
   "advance_upd_rka": "RKA ayarını güncelle",
   "advance_widevinel1": "Widevine L1 Düzelt",
   "nav_advance_menu": "Menü+",
-  "advance_set_zygisk_next_configs": "Zygisk-Next Ayarlarını ayarla"
+  "advance_set_zygisk_next_configs": "Zygisk-Next Ayarlarını ayarla",
+  "dialog_clear": "Clear",
+  "dialog_close": "Close",
+  "script_history_title": "Script Outputs",
+  "nav_advance_menu": "Menu +",
+  "advance_set_pif": "Set fingerprint (PIF)",
+  "advance_set_zygisk_next_configs": "Set Zygisk Next configs"
 }
