@@ -30,20 +30,55 @@ async function waitForValidDeviceInfo(maxWait = 4000, interval = 400) {
 }
 
 // Load device info and display it in the UI
+function setVal(id, text) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = text || "-";
+}
+
+// Paint a value green/red/amber based on what it means for integrity
+function setStat(id, text) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const v = (text || "-").toString();
+  el.textContent = v;
+  el.classList.remove("ok", "bad", "warn");
+  if (/^(OK|Installed|Active|Working|Enforcing)/i.test(v)) {
+    el.classList.add("ok");
+  } else if (/^(Broken|Missing|Not found|Not installed|No config)/i.test(v)) {
+    el.classList.add("bad");
+  } else if (/(missing|Permissive)/i.test(v)) {
+    el.classList.add("warn");
+  }
+}
+
 async function loadDeviceInfo() {
   try {
     const res = await fetch("/json/device-info.json?ts=" + Date.now());
     if (!res.ok) throw new Error("Failed to fetch");
 
     const data = await res.json();
-    document.getElementById("android-version").innerText = data.android || "-";
-    document.getElementById("kernel-version").innerText = data.kernel || "-";
-    document.getElementById("root-type").innerText = data.root || "-";
+    setVal("android-version", data.android);
+    setVal("kernel-version", data.kernel);
+    setVal("root-type", data.root);
+    setVal("dev-sign", data.romSign);
+    setVal("dev-patch", data.securityPatch);
+    setStat("dev-selinux", data.selinux);
+    setStat("dev-tee", data.teeStatus);
+    setStat("dev-keybox", data.keybox);
+    setStat("dev-pif", data.pif);
+    setStat("dev-hma", data.hma);
+    setStat("dev-zn", data.zygiskNext);
+
+    const fpEl = document.getElementById("dev-fp");
+    if (fpEl) {
+      fpEl.textContent = data.fingerprint || "-";
+      fpEl.title = data.fingerprint || "";
+    }
   } catch (err) {
     console.error("loadDeviceInfo() error:", err);
-    document.getElementById("android-version").innerText = "Error";
-    document.getElementById("kernel-version").innerText = "Error";
-    document.getElementById("root-type").innerText = "Error";
+    ["android-version","kernel-version","root-type","dev-sign","dev-patch",
+     "dev-selinux","dev-tee","dev-keybox","dev-pif","dev-hma","dev-zn","dev-fp"]
+      .forEach(id => setVal(id, "Error"));
   }
 }
 

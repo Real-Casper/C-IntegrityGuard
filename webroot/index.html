@@ -82,14 +82,19 @@
             <b id="android-version" class="v">–</b>
           </li>
           <li>
+            <i class="material-symbols-rounded" aria-hidden="true">verified</i>
+            <span class="k">ROM Sign</span>
+            <b id="dev-sign" class="v">–</b>
+          </li>
+          <li>
+            <i class="material-symbols-rounded" aria-hidden="true">security</i>
+            <span class="k">Security Patch</span>
+            <b id="dev-patch" class="v">–</b>
+          </li>
+          <li>
             <i class="material-symbols-rounded" aria-hidden="true">memory</i>
             <span class="k">Kernel</span>
             <b id="kernel-version" class="v">–</b>
-          </li>
-          <li>
-            <i class="material-symbols-rounded" aria-hidden="true">key</i>
-            <span class="k" data-i18n="home_root">Root Implementation</span>
-            <b id="root-type" class="v">–</b>
           </li>
           <li>
             <i class="material-symbols-rounded" aria-hidden="true">calendar_month</i>
@@ -101,7 +106,58 @@
             <span class="k" data-i18n="home_clock_time">Clock Time</span>
             <b id="clock-time" class="v">--:--:--</b>
           </li>
+          <li>
+            <i class="material-symbols-rounded" aria-hidden="true">shield</i>
+            <span class="k">SELinux</span>
+            <b id="dev-selinux" class="v">–</b>
+          </li>
         </ul>
+      </article>
+
+      <article class="panel glass" style="margin-top: .8rem;">
+        <h6 class="panel-cap accent">Integrity Status</h6>
+        <ul class="info-list">
+          <li>
+            <i class="material-symbols-rounded" aria-hidden="true">key</i>
+            <span class="k" data-i18n="home_root">Root Implementation</span>
+            <b id="root-type" class="v">–</b>
+          </li>
+          <li>
+            <i class="material-symbols-rounded" aria-hidden="true">developer_board</i>
+            <span class="k">TEE Status</span>
+            <b id="dev-tee" class="v">–</b>
+          </li>
+          <li>
+            <i class="material-symbols-rounded" aria-hidden="true">vpn_key</i>
+            <span class="k">Keybox</span>
+            <b id="dev-keybox" class="v">–</b>
+          </li>
+          <li>
+            <i class="material-symbols-rounded" aria-hidden="true">fingerprint</i>
+            <span class="k">PIF Module</span>
+            <b id="dev-pif" class="v">–</b>
+          </li>
+          <li>
+            <i class="material-symbols-rounded" aria-hidden="true">visibility_off</i>
+            <span class="k">HMA-oss</span>
+            <b id="dev-hma" class="v">–</b>
+          </li>
+          <li>
+            <i class="material-symbols-rounded" aria-hidden="true">tune</i>
+            <span class="k">Zygisk Next</span>
+            <b id="dev-zn" class="v">–</b>
+          </li>
+        </ul>
+      </article>
+
+      <article class="panel glass" style="margin-top: .8rem;">
+        <div class="fp-row">
+          <i class="material-symbols-rounded" aria-hidden="true">qr_code_2</i>
+          <div class="fp-body">
+            <span class="k">Fingerprint</span>
+            <b id="dev-fp" class="fp-val">–</b>
+          </div>
+        </div>
       </article>
     </section>
 

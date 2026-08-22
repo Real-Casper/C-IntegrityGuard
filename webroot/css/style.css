@@ -447,6 +447,33 @@ body {
   color: var(--ui-text);
 }
 
+.info-list .v.ok   { color: var(--snackbar-success); }
+.info-list .v.bad  { color: color-mix(in srgb, var(--snackbar-error) 70%, white); }
+.info-list .v.warn { color: var(--snackbar-warning); }
+
+/* fingerprint strip */
+.fp-row {
+  display: flex;
+  align-items: flex-start;
+  gap: .65rem;
+}
+
+.fp-row > i {
+  color: var(--ui-pill-bg);
+  font-size: 19px !important;
+  margin-top: .1rem;
+}
+
+.fp-body { min-width: 0; flex: 1; display: flex; flex-direction: column; gap: .2rem; }
+
+.fp-val {
+  font-family: var(--font-head);
+  font-size: .74rem;
+  line-height: 1.45;
+  word-break: break-all;
+  color: var(--ui-muted);
+}
+
 /* ---------- action tiles ---------- */
 
 .tile-stack { display: flex; flex-direction: column; gap: .55rem; }
