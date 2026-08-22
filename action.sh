@@ -1,7 +1,8 @@
 MODPATH="${0%/*}"
 
-# ensure not running in busybox ash standalone shell
-set +o standalone
+# Leave busybox ash standalone mode if we happen to be in it.
+# Guarded: plain /system/bin/sh (mksh) has no such option and would abort here.
+set +o standalone 2>/dev/null || true
 unset ASH_STANDALONE
 
 for SCRIPT in \

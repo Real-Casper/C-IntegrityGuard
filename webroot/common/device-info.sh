@@ -36,10 +36,12 @@ fi
 rom_sign="$(gp ro.build.tags) · $(gp ro.build.type)"
 [ "$rom_sign" = " · " ] && rom_sign="Unknown"
 
-# Security patch: prefer the value Tricky Store reports
+# Security patch: prefer the value Tricky Store reports.
+# Newer Tricky Store writes a multi-line file (system=/boot=/vendor=);
+# show the boot partition date as the headline value.
 sec_patch=""
 if [ -f /data/adb/tricky_store/security_patch.txt ]; then
-  sec_patch=$(grep -m1 . /data/adb/tricky_store/security_patch.txt 2>/dev/null)
+  sec_patch=$(grep -E '^boot=' /data/adb/tricky_store/security_patch.txt | cut -d'=' -f2)
 fi
 [ -z "$sec_patch" ] && sec_patch=$(gp ro.build.version.security_patch)
 [ -z "$sec_patch" ] && sec_patch="Unknown"
