@@ -1,0 +1,24 @@
+# Force LF for all text files so module scripts stay POSIX-valid on Windows checkouts.
+* text=auto eol=lf
+
+# Explicit LF for module scripts and configs
+*.sh              text eol=lf
+*.json            text eol=lf
+*.html            text eol=lf
+*.css             text eol=lf
+*.js              text eol=lf
+*.md              text eol=lf
+*.yml             text eol=lf
+*.prop            text eol=lf
+key               text eol=lf
+update-binary     text eol=lf
+updater-script    text eol=lf
+attestation       text eol=lf
+
+# Binary assets must never be touched
+*.png             binary
+*.gif             binary
+*.webp            binary
+*.svg             binary
+*.zip             binary
+sqlite3           binary

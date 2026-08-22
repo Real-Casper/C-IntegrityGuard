@@ -1,0 +1,36 @@
+﻿name: Build Test Module
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Stamp test version with git HEAD
+        run: |
+          BUILD_ID=$(git rev-parse --short HEAD | cut -c1-7)
+          echo "BUILD_ID=${BUILD_ID}" >> $GITHUB_ENV
+          sed -i "s/^version=.*/version=test-${BUILD_ID}/" module.prop
+
+      - name: Stage module files
+        run: |
+          mkdir -p dist
+          rsync -a ./ dist/ \
+            --exclude '.git' \
+            --exclude '.github' \
+            --exclude '.gitignore' \
+            --exclude 'doc' \
+            --exclude 'dist' \
+            --exclude 'README.md' \
+            --exclude 'changelog.md' \
+            --exclude 'update.json'
+
+      - name: Upload flashable artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: C-IntegrityGuard-test-${{ env.BUILD_ID }}
+          path: dist/**

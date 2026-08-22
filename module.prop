@@ -1,0 +1,8 @@
+id=CIntegrityGuard
+name=C-IntegrityGuard
+version=v0.1.0
+versionCode=10
+author=Real-Casper
+banner=https://raw.githubusercontent.com/Real-Casper/C-IntegrityGuard/main/doc/banner.png
+description=A systemless module to get strong integrity so easily
+updateJson=https://raw.githubusercontent.com/Real-Casper/C-IntegrityGuard/main/update.json
