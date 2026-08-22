@@ -5,6 +5,6 @@ string.yml
 # Local-only files (never publish)
 PANDUAN_PENGGUNAAN.md
 build.ps1
-
+.playwright-mcp
 # Build output
 *.zip
