@@ -49,15 +49,13 @@ document.addEventListener("DOMContentLoaded", () => {
     renderHistoryDialog();
   });
 
-  // Refresh info button event
+  // Refresh info button is handled by device.js (runInfoScript + spinner).
+  // Here we only piggyback the toast + network re-check.
   const refreshBtn = document.getElementById("refresh-info-btn");
   if (refreshBtn) {
     refreshBtn.addEventListener("click", () => {
       showToast(t("home_refreshing"), "info");
       updateNetworkStatus();
-      if (window.loadDeviceInfo) {
-        window.loadDeviceInfo();
-      }
     });
   }
 });

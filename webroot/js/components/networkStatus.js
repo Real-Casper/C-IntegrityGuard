@@ -2,35 +2,23 @@
 let lastStatus = null;
 
 async function verifyRealInternet() {
+  // Inside the module WebUI there is no page origin that Google will allow,
+  // so a no-cors probe is the only reliable signal.
   try {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 2000);
+    const timeoutId = setTimeout(() => controller.abort(), 2500);
 
     await fetch("https://clients3.google.com/generate_204", {
       method: "GET",
       cache: "no-store",
+      mode: "no-cors",
       signal: controller.signal,
     });
 
     clearTimeout(timeoutId);
     return true;
   } catch {
-    try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 2000);
-
-      await fetch("https://clients3.google.com/generate_204", {
-        method: "GET",
-        cache: "no-store",
-        mode: "no-cors",
-        signal: controller.signal,
-      });
-
-      clearTimeout(timeoutId);
-      return true;
-    } catch {
-      return false;
-    }
+    return false;
   }
 }
 
@@ -76,10 +64,10 @@ async function updateNetworkStatus() {
 // Initialize network status
 setTimeout(() => {
   updateNetworkStatus();
-  setInterval(updateNetworkStatus, 3000);
+  setInterval(updateNetworkStatus, 15000);
   window.addEventListener("online", updateNetworkStatus);
   window.addEventListener("offline", updateNetworkStatus);
-}, 500);
+}, 600);
 
 // Export function
 window.updateNetworkStatus = updateNetworkStatus;

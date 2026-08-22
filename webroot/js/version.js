@@ -2,6 +2,10 @@
 // Executes a shell command using KernelSU and returns a Promise with the output
 function exec(command) {
   return new Promise((resolve, reject) => {
+    if (typeof ksu !== "object" || typeof ksu.exec !== "function") {
+      reject("ksu.exec unavailable");
+      return;
+    }
     const cb = `cb_${Date.now()}`;
     window[cb] = (code, out, err) => {
       delete window[cb];
@@ -15,12 +19,13 @@ function exec(command) {
 // Reads the 'version' from /data/adb/modules/CIntegrityGuard/module.prop
 async function loadVersionFromModuleProp() {
   const versionElement = document.getElementById('version-text');
+  if (!versionElement) return;
   try {
     const version = await exec("grep '^version=' /data/adb/modules/CIntegrityGuard/module.prop | cut -d'=' -f2");
-    versionElement.textContent = version.trim();
+    versionElement.textContent = (version || "").trim() || "-";
   } catch (error) {
-    appendToOutput("[!] Failed to read version from module.prop");
-    console.error("Failed to read version from module.prop:", error);
+    console.warn("Version unavailable (no root bridge):", error);
+    versionElement.textContent = "-";
   }
 }
 
